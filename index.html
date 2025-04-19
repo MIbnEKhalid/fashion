@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StepStyle - Shoe Fashion Designs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff6b6b;
+    }
+
+    .logo span {
+      color: #333;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ff6b6b;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #ff6b6b;
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ff5252;
+    }
+
+    /* Featured Designs */
+    .featured,
+    .about,
+    .contact {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: #777;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .designs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .design-card {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .design-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .design-img {
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .design-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .design-card:hover .design-img img {
+      transform: scale(1.1);
+    }
+
+    .design-info {
+      padding: 20px;
+    }
+
+    .design-info h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .design-info p {
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    .design-info .price {
+      font-weight: bold;
+      color: #ff6b6b;
+      font-size: 20px;
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-img {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .about-text h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .about-text p {
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .about-text ul {
+      margin: 20px 0;
+      padding-left: 20px;
+    }
+
+    .about-text ul li {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact-info {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-info h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .contact-details {
+      margin-bottom: 30px;
+    }
+
+    .contact-details p {
+      margin-bottom: 15px;
+      color: #555;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-details i {
+      margin-right: 10px;
+      color: #ff6b6b;
+      width: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      display: inline-flex !important;
+      text-decoration: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #f0f0f0;
+      border-radius: 50%;
+      color: #555 !important;
+      transition: all 0.3s;
+    }
+
+    .social-links a:focus {
+      outline: 2px solid #ff6b6b;
+      outline-offset: 4px;
+    }
+
+    .social-links a:hover {
+      background-color: #ff6b6b;
+      color: #fff !important;
+    }
+
+    .contact-form {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-form h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #ff6b6b;
+      outline: none;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background-color: #ff6b6b;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #ff5252;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 50px 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background-color: #ff6b6b;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: #bbb;
+      margin-bottom: 10px;
+      display: block;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: #ff6b6b;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      color: #bbb;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .about-content,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .about-img {
+        order: -1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Step<span>Style</span></div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#designs">Designs</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Step Into Style</h1>
+        <p>Discover our exclusive collection of fashion-forward shoe designs that blend comfort with cutting-edge style.</p>
+        <a href="#designs" class="btn">View Collection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Designs -->
+  <section class="featured" id="designs">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Designs</h2>
+        <p>Explore our latest and most popular shoe designs created by top fashion designers.</p>
+      </div>
+
+      <div class="designs-grid">
+        <!-- Design 1 -->
+        <div class="design-card">
+          <div class="design-img">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Running Shoe Design">
+          </div>
+          <div class="design-info">
+            <h3>Urban Runner Pro</h3>
+            <p>Performance meets style in this lightweight running shoe.</p>
+            <span class="price">$129.99</span>
+          </div>
+        </div>
+
+        <!-- Design 2 -->
+        <div class="design-card">
+          <div class="design-img">
+            <img src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1348&q=80" alt="Casual Shoe Design">
+          </div>
+          <div class="design-info">
+            <h3>Classic Canvas</h3>
+            <p>Timeless casual design with modern comfort technology.</p>
+            <span class="price">$89.99</span>
+          </div>
+        </div>
+
+        <!-- Design 3 -->
+        <div class="design-card">
+          <div class="design-img">
+            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="High Heel Design">
+          </div>
+          <div class="design-info">
+            <h3>Elegance Stiletto</h3>
+            <p>Sophisticated high heels with premium materials.</p>
+            <span class="price">$159.99</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About StepStyle</h2>
+        <p>Learn more about our passion for shoe design and our commitment to quality.</p>
+      </div>
+
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Our Story</h3>
+          <p>Founded in 2015, StepStyle began as a small boutique design studio with a big vision: to revolutionize footwear fashion by combining innovative design with unparalleled comfort.</p>
+          <p>Today, we're proud to be one of the leading shoe design companies, with our creations worn by fashion enthusiasts worldwide.</p>
+
+          <h3 style="margin-top: 30px;">Our Design Philosophy</h3>
+          <ul>
+            <li>Innovative designs that push boundaries</li>
+            <li>Premium materials sourced ethically</li>
+            <li>Comfort that doesn't compromise style</li>
+            <li>Sustainable production practices</li>
+            <li>Customization options for unique looks</li>
+          </ul>
+        </div>
+
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1458538977777-0549b2370168?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Shoe Design Studio">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>Have questions or want to discuss a custom design? Get in touch with our team.</p>
+      </div>
+
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="contact-details">
+            <p><i>📍</i> 123 Design Street, Fashion City, FC 10001</p>
+            <p><i>📞</i> (123) 456-7890</p>
+            <p><i>✉️</i> info@stepstyle.com</p>
+            <p><i>🕒</i> Monday-Friday: 9am-6pm</p>
+          </div>
+
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3>Send Us a Message</h3>
+          <form>
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>StepStyle</h3>
+          <p>Bringing innovative shoe designs to fashion-forward individuals since 2015.</p>
+          <div class="social-links">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="#home">Home</a>
+          <a href="#designs">Designs</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Customer Service</h3>
+          <a href="#">FAQs</a>
+          <a href="#">Shipping Policy</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">Size Guide</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p>Subscribe to get updates on new designs and exclusive offers.</p>
+          <form>
+            <input type="email" placeholder="Your email" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: 5px; border: none;">
+            <button type="submit" class="btn" style="width: 100%; padding: 10px;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; 2025 StepStyle. All Rights Reserved. | Developed by Raskih haleem</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
