@@ -1,12 +1,197 @@
-<body>
-    <main>
-        <section>
-            <h2>Content Section</h2>
-            <p>This is a sample content section.</p>
-        </section>
-        <section>
-            <h2>Another Section</h2>
-            <p>This is another section with more content.</p>
-        </section>
-    </main>
-</html>
+<style>
+
+/* Container for content */
+.container {
+  margin: 0 auto;
+}
+
+/* Section Headings */
+h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin: 40px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.blog-post {
+  background-color: transparent;
+  border-radius: 8px;
+  border: solid .1rem #3d444d;
+  padding: 0;
+  margin-bottom: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.blog-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.blog-post:hover .blog-image {
+  opacity: 0.9;
+}
+
+.blog-content {
+  padding: 25px;
+}
+
+.blog-post h2 {
+  color: #bb86fc; /* Purple accent color */
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.blog-post p {
+  margin: 10px 0;
+  color: #b0b0b0;
+}
+
+.blog-post p:first-of-type {
+  color: #03dac6; /* Teal for author */
+  font-weight: 500;
+}
+
+.blog-post p:nth-of-type(2) {
+  color: #9e9e9e; /* Gray for date */
+  font-size: 0.9rem;
+}
+
+/* Read More Link */
+.blog-post a {
+  display: inline-block;
+  color: #bb86fc;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 15px;
+  padding: 8px 15px;
+  border: 1px solid #bb86fc;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.blog-post a:hover {
+  background-color: #bb86fc;
+  color: #121212;
+}
+
+/* Content preview */
+.blog-preview {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Grid Layout for Blog Posts */
+.blogs-container {
+  display: flex;
+   gap: 25px;
+  margin-bottom: 50px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .blogs-container {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .blog-content {
+    padding: 20px;
+  }
+  
+  .blog-image {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-image {
+    height: 150px;
+  }
+}
+
+.blog-tags {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.blog-tag {
+  background-color: #03dac6;
+  color: #121212;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.blog-tag:hover {
+  background-color: #028f8c;
+  color: #ffffff;
+}
+</style>
+<div class="container">
+  <br><br><br>
+  <h1>Latest Blogs</h1>
+  <div class="blogs-container">
+    {{#each blogs}}
+      <div class="blog-post">
+        {{#if this.image}}
+        <img src="{{this.image}}" alt="{{this.title}}" class="blog-image">
+        {{else}}
+        <img src="/default-blog-image.jpg" alt="{{this.title}}" class="blog-image">
+        {{/if}}
+        <div class="blog-content">
+          <h2>{{this.title}}</h2>
+          <p>{{this.author}}</p>
+          <p>{{this.date}}</p>
+          <p class="blog-preview">{{this.content}}</p>
+                    <div class="blog-tags">
+            {{#each this.tags}}
+              <span class="blog-tag">{{this}}</span>
+            {{/each}}
+          </div>
+          <a href="/blogs/{{this.id}}">Read more</a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <h1>Famous Blogs</h1>
+  <div class="blogs-container">
+    {{#each blogs}}
+      <div class="blog-post">
+        {{#if this.image}}
+        <img src="{{this.image}}" alt="{{this.title}}" class="blog-image">
+        {{else}}
+        <img src="/default-blog-image.jpg" alt="{{this.title}}" class="blog-image">
+        {{/if}}
+        <div class="blog-content">
+          <h2>{{this.title}}</h2>
+          <p>{{this.author}}</p>
+          <p>{{this.date}}</p>
+          <p class="blog-preview">{{this.content}}</p>
+                    <div class="blog-tags">
+            {{#each this.tags}}
+              <span class="blog-tag">{{this}}</span>
+            {{/each}}
+          </div>
+          <a href="/blogs/{{this.id}}">Read more</a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

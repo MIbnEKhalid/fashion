@@ -6,9 +6,6 @@ import mbkauthe from 'mbkauthe';
 import adminRoute from './routes/admin.js';
 import mainRoute from './routes/main.js';
 
-
-import { validateSessionAndRole } from 'mbkauthe';
-
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);

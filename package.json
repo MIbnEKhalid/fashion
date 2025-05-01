@@ -14,7 +14,8 @@
   "dependencies": {
     "express": "^5.1.0",
     "express-handlebars": "^8.0.1",
-    "mbkauthe": "latest"
+    "mbkauthe": "latest",
+    "pg": "8.15.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
